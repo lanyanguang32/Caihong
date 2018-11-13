@@ -41,7 +41,7 @@ class CaijiHuiben extends Command
     {
         $this->info("开始采集");
         //
-        for($i=1; $i<= 6261; $i++){
+        for($i=1; $i<= 1000000; $i++){
             $this->info("开始采集第".$i."页");
             $url = 'https://huiben.cn/daquan/list-'.$i.'.shtml';
             // 定义采集规则
@@ -52,12 +52,15 @@ class CaijiHuiben extends Command
                 'url' => ["h4>a","href"]
             ];
             $rt = QueryList::get($url)->rules($rules)->query()->getData();
-
+            if(!$rt->all()){
+                break;
+            }
             foreach ($rt->all() as $job) {
                 CaijiHuibenJob::dispatch($job);
             }
             $this->info("第".$i."页采集结束");
         }
         $this->info("采集结束");
+
     }
 }

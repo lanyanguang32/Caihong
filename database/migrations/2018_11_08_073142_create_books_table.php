@@ -21,7 +21,7 @@ class CreateBooksTable extends Migration
             $table->string('author');
             $table->string('translator');
             $table->string('image');
-            $table->string('images');
+            $table->text('images');
             $table->string('publisher');
             $table->date('pubdate');
             $table->string('tags');
