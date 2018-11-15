@@ -41,7 +41,7 @@ class CaijiHuiben extends Command
     {
         $this->info("开始采集");
         //
-        for($i=1; $i<= 1000000; $i++){
+        for($i=6297; $i<= 1000000; $i++){
             $this->info("开始采集第".$i."页");
             $url = 'https://huiben.cn/daquan/list-'.$i.'.shtml';
             // 定义采集规则

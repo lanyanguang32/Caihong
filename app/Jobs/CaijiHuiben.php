@@ -112,6 +112,7 @@ class CaijiHuiben implements ShouldQueue
             ];
          $age = '';
          $subject = [];  
+         $tags = [];
         foreach ($keyword as $key) {
             if(in_array($key['keyword'], $ages)){
                 $group = 'age';
@@ -128,6 +129,9 @@ class CaijiHuiben implements ShouldQueue
             ];
         } 
         print_r($data);
+        if(!$data){
+            return;
+        }
         //data
         $preg = preg_match_all("/作 者：(.*)出版社：(.*)    语种：(.*)被/", $data[0]['data'], $matches);
         $preg = preg_match_all("/\d+/", $data[0]['data'], $matches2);
